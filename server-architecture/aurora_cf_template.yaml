@@ -1,0 +1,48 @@
+Parameters:
+  DBInstanceClass:
+    Default: db.t3.medium
+    Description: DB instance class
+    Type: String
+  DBUsername:
+    NoEcho: 'true'
+    Description: Username for aurora-postgresql database access
+    Type: String
+    MinLength: '1'
+    MaxLength: '16'
+    ConstraintDescription: must begin with a letter and contain only alphanumeric characters.
+  DBPassword:
+    NoEcho: 'true'
+    Description: Password aurora-postgresql database access
+    Type: String
+    MinLength: '6'
+    MaxLength: '41'
+    ConstraintDescription: must contain only alphanumeric characters.
+
+Resources:
+  RDSCluster:
+    Type: 'AWS::RDS::DBCluster'
+    Properties:
+      MasterUsername: !Ref DBUsername
+      MasterUserPassword: !Ref DBPassword
+      DBClusterIdentifier: aurora-postgresql-cluster
+      Engine: aurora-postgresql
+      EngineVersion: '11.7'
+      DBClusterParameterGroupName: default.aurora-postgresql11
+      EnableCloudwatchLogsExports:
+        - postgresql
+  RDSDBInstance1:
+    Type: 'AWS::RDS::DBInstance'
+    Properties:
+      DBInstanceIdentifier: aurora-postgresql-instance1
+      Engine: aurora-postgresql
+      DBClusterIdentifier: !Ref RDSCluster
+      PubliclyAccessible: 'true'
+      DBInstanceClass: !Ref DBInstanceClass
+  RDSDBInstance2:
+    Type: 'AWS::RDS::DBInstance'
+    Properties:
+      DBInstanceIdentifier: aurora-postgresql-instance2
+      Engine: aurora-postgresql
+      DBClusterIdentifier: !Ref RDSCluster
+      PubliclyAccessible: 'true'
+      DBInstanceClass: !Ref DBInstanceClass
