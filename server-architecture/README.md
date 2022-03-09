@@ -9,6 +9,12 @@ aws cloudformation deploy \
     --parameter-overrides file://{path_to_parameter_file.json}
 ```
 
+Content of {path_to_parameter_file.json} looks like the following
+
+```
+["DBUsername=SUPER_SECURE_USERNAME", "DBPassword=SUPER_SECURE_PASSWORD"]
+```
+
 ### Deploy Server
 
 Ensure `.env` is in project root with the following variables
