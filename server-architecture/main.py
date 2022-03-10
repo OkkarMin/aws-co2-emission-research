@@ -58,9 +58,10 @@ def get_one_color(color: str) -> Color:
     if result is None:
         return ("Not found",)
 
+    color, rgb = result
     return {
-        "color": result[0],
-        "rgb": result[1],
+        "color": color,
+        "rgb": rgb,
     }
 
 
@@ -70,10 +71,11 @@ def get_all_color():
     rows = cursor.execute("SELECT * FROM colors").fetchall()
 
     for row in rows:
+        color, rgb = row
         result.append(
             {
-                "color": row[0],
-                "rgb": row[1],
+                "color": color,
+                "rgb": rgb,
             }
         )
 
