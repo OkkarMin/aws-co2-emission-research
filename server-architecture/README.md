@@ -33,5 +33,5 @@ PORT
 
 ```bash
 pip install -r requirements.txt
-nohup uvicorn --host 0.0.0.0 --port 80 main:app
+nohup uvicorn --host 0.0.0.0 --port 80 main:app &
 ```
