@@ -22,16 +22,16 @@ Ensure `.env` is in project root with the following variables
 ```
 HOST
 DBNAME
-USER
-PASSWORD
+DBUSER
+DBPASSWORD
 PORT
 ```
 
-- `USER` and `PASSWORD` are set when carrying out [Deploy Infrasture](#deploy-infrastructure) step
+- `DBUSER` and `DBPASSWORD` are set when carrying out [Deploy Infrasture](#deploy-infrastructure) step
 
 - Rest of the variables are obtained from AWS Aurora write instance
 
 ```bash
 pip install -r requirements.txt
-uvicorn --host 0.0.0.0 --port 80 main:app
+nohup uvicorn --host 0.0.0.0 --port 80 main:app
 ```

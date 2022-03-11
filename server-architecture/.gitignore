@@ -1,3 +1,4 @@
 venv
 *.json
 .env
+userdata.txt
