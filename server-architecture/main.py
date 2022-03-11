@@ -10,8 +10,8 @@ app = FastAPI()
 conn_kwargs = {
     "host": os.getenv("HOST"),
     "dbname": os.getenv("DBNAME"),
-    "user": os.getenv("USER"),
-    "password": os.getenv("PASSWORD"),
+    "user": os.getenv("DBUSER"),
+    "password": os.getenv("DBPASSWORD"),
     "port": os.getenv("PORT"),
 }
 
