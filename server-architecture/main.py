@@ -36,7 +36,7 @@ class Color(BaseModel):
 @app.put("/colors")
 def add_color(color: Color):
     cursor.execute(
-        "INSERT INTO colors (color, rgb) VALUES (%s, %s)",
+        "INSERT INTO colors (color, rgb) VALUES (%s, %s) ON CONFLICT (color) DO UPDATE SET rgb = EXCLUDED.rgb",
         (color.color, color.rgb),
     )
 
