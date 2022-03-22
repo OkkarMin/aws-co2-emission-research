@@ -8,11 +8,11 @@ load_dotenv()
 app = FastAPI()
 
 conn_kwargs = {
-    "host": os.getenv("HOST"),
+    "host": os.getenv("DBHOST"),
     "dbname": os.getenv("DBNAME"),
     "user": os.getenv("DBUSER"),
     "password": os.getenv("DBPASSWORD"),
-    "port": os.getenv("PORT"),
+    "port": os.getenv("DBPORT"),
 }
 
 connection = psycopg.connect(**conn_kwargs)
