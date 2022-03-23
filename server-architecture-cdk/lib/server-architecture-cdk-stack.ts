@@ -69,8 +69,9 @@ export class ServerArchitectureCdkStack extends Stack {
     instanceUserData.addCommands(
       "sudo yum install git python37 -y",
       "pip3 install --upgrade pip",
+      "cd ~",
       "git clone https://github.com/OkkarMin/aws-co2-emission-research.git",
-      "cd aws-co2-emission-research/server-architecture",
+      "cd aws-co2-emission-research/server-architecture-cdk/app",
       "pip3 install -r requirements.txt",
       `export DBHOST=${DBHOST} DBNAME=${DBNAME} DBUSER=${DBUSER} DBPASSWORD=${DBPASSWORD} DBPORT=${DBPORT}`,
       "nohup uvicorn --host 0.0.0.0 --port 3000 main:app &"
