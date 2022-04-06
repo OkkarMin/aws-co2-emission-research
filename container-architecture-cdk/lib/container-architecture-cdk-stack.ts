@@ -19,7 +19,7 @@ export class ContainerArchitectureCdkStack extends Stack {
 
     // Add capacity to the cluster
     cluster.addCapacity("DefaultCapacity", {
-      instanceType: new ec2.InstanceType("t3.medium"),
+      instanceType: new ec2.InstanceType("t2.micro"),
       desiredCapacity: 1,
     });
 

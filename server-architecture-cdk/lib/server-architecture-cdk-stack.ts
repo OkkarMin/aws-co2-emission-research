@@ -43,8 +43,8 @@ export class ServerArchitectureCdkStack extends Stack {
         SecretValue.plainText(process.env.DBPASSWORD!)
       ),
       instanceType: ec2.InstanceType.of(
-        ec2.InstanceClass.T3,
-        ec2.InstanceSize.MEDIUM
+        ec2.InstanceClass.T2,
+        ec2.InstanceSize.MICRO
       ),
       vpc: defaultVpc,
       vpcSubnets: {
@@ -80,14 +80,14 @@ export class ServerArchitectureCdkStack extends Stack {
       vpc: defaultVpc,
       securityGroup: colorToRGBSecurtyGroup,
       instanceType: ec2.InstanceType.of(
-        ec2.InstanceClass.T3,
-        ec2.InstanceSize.MEDIUM
+        ec2.InstanceClass.T2,
+        ec2.InstanceSize.MICRO
       ),
       machineImage: ec2.MachineImage.latestAmazonLinux({
         generation: ec2.AmazonLinuxGeneration.AMAZON_LINUX_2,
       }),
       userData: instanceUserData,
-      keyName: "okkar-ec2-transient-8-ap-southeast-1-kp",
+      keyName: "server-architecture-keypair",
     });
   }
 }
